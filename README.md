@@ -2,20 +2,25 @@
 
 An interactive map of a what3words trail around Kingston upon Thames, built with [Leaflet](https://leafletjs.com/).
 
-Open `index.html` in a browser, or view it on GitHub Pages if that's enabled for this repo.
+View it on GitHub Pages at https://angrytengri.github.io/kingston-w3w-trail/, or run it locally:
+
+```
+python3 -m http.server 8000
+```
+
+then open http://localhost:8000. Opening `index.html` straight from disk works too, but OpenStreetMap may refuse tiles to `file://` pages; the map then falls back to Esri.
 
 ## What it does
 
-- Numbered pins for each location, with a dashed line joining them in order
-- Street and satellite basemaps (CARTO, Esri and OpenStreetMap, with automatic fallback if one is blocked)
-- Every pin links to its exact what3words square
-- Drag a pin, click the map, or paste coordinates to correct a position; changes are saved in your browser's localStorage
-- "Copy positions" exports every location with its coordinates
+- Numbered pins for each location
+- Street and satellite basemaps (OpenStreetMap and Esri, with automatic fallback to Esri if OpenStreetMap is blocked)
+- Every location links to its exact what3words square and to Google Maps, from both the list and the pin
+- "Copy locations" copies every location with its coordinates
 
 ## Positions
 
-Pins start on the named landmark, not the exact what3words square, so some are 50 to 200 m off. The locations live in the `PLACES` array at the top of `js/app.js`. Paste the exact coordinates there to make a correction permanent for everyone.
+Each pin uses the exact coordinates of its what3words square. The locations live in the `PLACES` array at the top of `js/app.js`.
 
 ## Credits
 
-Map data © OpenStreetMap contributors, tiles © CARTO and Esri. Leaflet is BSD-2-Clause licensed (see `vendor/leaflet/LICENSE`).
+Map data and tiles © OpenStreetMap contributors, Esri tiles © Esri. Leaflet is BSD-2-Clause licensed (see `vendor/leaflet/LICENSE`).
